@@ -42,4 +42,16 @@ public class Journal{
             }
             Console.WriteLine($"Journal loaded successfully from {file}");
     }
+    public void Editor()
+    {
+        DisplayAll();
+        Console.Write("Which message do you want to edit (ex: 1)? ");
+        string indexstr = Console.ReadLine();
+        int index = int.Parse(indexstr) - 1;
+
+        Console.WriteLine("Please insert the new message: ");
+        string newmessage = Console.ReadLine();
+
+        _entries[index]._entryText = newmessage;
+    }
 }

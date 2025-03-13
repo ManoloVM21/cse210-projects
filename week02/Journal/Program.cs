@@ -8,9 +8,9 @@ class Program
         string option = "";
         Journal theJournal = new Journal();
         PromptGenerator prompt = new PromptGenerator();
-        while (option != "5") {
+        while (option != "6") {
             Console.WriteLine("Please select one of the following choices:");
-            Console.WriteLine("1. Write \n2. Display \n3. Load \n4. Save \n5. Quit");
+            Console.WriteLine("1. Write \n2. Display \n3. Load \n4. Save \n5. Edit \n6. Quit");
             Console.Write("What would you like to do? ");
             option = Console.ReadLine();
             
@@ -46,6 +46,10 @@ class Program
                 Console.Write("What is the name of the file? ");
                 string textFile = Console.ReadLine(); 
                 theJournal.SaveToFile(textFile);
+            }
+            if (option == "5")
+            {
+                theJournal.Editor();
             }
 
         

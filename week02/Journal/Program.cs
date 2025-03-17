@@ -51,7 +51,16 @@ class Program
             {
                 theJournal.Editor();
             }
+        
+        Car car1 = new Car();
+        car1._brand = "Toyota";
+        car1._year = 2022;
+        car1._owner = "Martin Harris";
 
+        Car car2 = new Car();
+        car2._brand = "Hundai";
+        car2._year = 2022;
+        car2._owner = "Oliver Cowdery";
         
         }
     }

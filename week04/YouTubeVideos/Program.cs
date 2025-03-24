@@ -1,9 +1,82 @@
 using System;
+using System.Collections.Concurrent;
+using System.ComponentModel.Design;
+using System.Diagnostics.Metrics;
+using System.IO.Pipes;
 
+public class Video{
+    public string _title;
+    public string _author;
+    public int _lenght;
+    public List<Comment> _comments = new List<Comment>();
+
+    public Video(string title, string author, int length){
+        _title = title;
+        _author = author;
+        _lenght = length;
+    }
+    public void AddComment(string person, string text){
+        Comment comment = new Comment(person,text);
+        _comments.Add(comment);
+    }
+
+    public int numberComments(){
+        return _comments.Count;
+    }
+    public void Display(){
+        int counts = numberComments();
+        string text = $"Title: {_title}\nAuthor: {_author}\nLenght: {_lenght}\nNumber of Comments: {counts}\nComments:";
+        Console.WriteLine(text);
+        foreach (Comment comment in _comments){
+            comment.Display();
+        }
+        Console.WriteLine(" ");       
+    }
+}
+
+public class Comment{
+    public string _person;
+    public string _text;
+    public Comment(string person, string text){
+        _person = person;
+        _text = text;
+    }
+    public void Display(){
+        Console.WriteLine($"{_person} - '{_text}'");
+    }
+}
 class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello World! This is the YouTubeVideos Project.");
+        Console.WriteLine("Hello World! This is the YouTubeVideos Project.\n  ");
+
+        List<Video> videos = new List<Video>();
+
+        Video video1 = new Video("Making mofongo","Skrillex",400);
+        Video video2 = new Video("Ice-Bucket Challenge","Willyrex",1000);
+        Video video3 = new Video("Squid-Game","Mr. Beast",11500);
+
+        video1.AddComment("Jose1234","That's sounds really good!");
+        video1.AddComment("Anonymous555","I hate it.");
+        video1.AddComment("ponystar6007","Skrillex 2010 was better");
+
+
+        video2.AddComment("Mariah_rockstar","that's so dumb");
+        video2.AddComment("halo456732","Willy's so funny");
+        video2.AddComment("noonecares","where's vegeta???");
+
+        video3.AddComment("noideausername","not even close to the original serie");
+        video3.AddComment("lackedofnames777","dont know why I saw this");
+        video3.AddComment("Daniel_DARK666","Mr. Beast the Best!");
+
+        videos.Add(video1);
+        videos.Add(video2);
+        videos.Add(video3);
+
+        foreach (Video video in videos){
+            video.Display();
+        }
+
     }
 }

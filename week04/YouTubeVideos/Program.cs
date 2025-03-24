@@ -5,10 +5,10 @@ using System.Diagnostics.Metrics;
 using System.IO.Pipes;
 
 public class Video{
-    public string _title;
-    public string _author;
-    public int _lenght;
-    public List<Comment> _comments = new List<Comment>();
+    private string _title;
+    private string _author;
+    private int _lenght;
+    private List<Comment> _comments = new List<Comment>();
 
     public Video(string title, string author, int length){
         _title = title;
@@ -35,8 +35,8 @@ public class Video{
 }
 
 public class Comment{
-    public string _person;
-    public string _text;
+    private string _person;
+    private string _text;
     public Comment(string person, string text){
         _person = person;
         _text = text;

@@ -3,48 +3,6 @@ using System.Collections.Concurrent;
 using System.ComponentModel.Design;
 using System.Diagnostics.Metrics;
 using System.IO.Pipes;
-
-public class Video{
-    private string _title;
-    private string _author;
-    private int _lenght;
-    private List<Comment> _comments = new List<Comment>();
-
-    public Video(string title, string author, int length){
-        _title = title;
-        _author = author;
-        _lenght = length;
-    }
-    public void AddComment(string person, string text){
-        Comment comment = new Comment(person,text);
-        _comments.Add(comment);
-    }
-
-    public int numberComments(){
-        return _comments.Count;
-    }
-    public void Display(){
-        int counts = numberComments();
-        string text = $"Title: {_title}\nAuthor: {_author}\nLenght: {_lenght}\nNumber of Comments: {counts}\nComments:";
-        Console.WriteLine(text);
-        foreach (Comment comment in _comments){
-            comment.Display();
-        }
-        Console.WriteLine(" ");       
-    }
-}
-
-public class Comment{
-    private string _person;
-    private string _text;
-    public Comment(string person, string text){
-        _person = person;
-        _text = text;
-    }
-    public void Display(){
-        Console.WriteLine($"{_person} - '{_text}'");
-    }
-}
 class Program
 {
     static void Main(string[] args)
